@@ -13,15 +13,15 @@ ENV PROFILES_LOC "/profiles"
 USER root
 
 # Upgrade the system
-RUN apt update && \
-    apt upgrade --assume-yes
+RUN apt update
+RUN apt upgrade --assume-yes
 
 # Setup directory structure and permissions
-RUN useradd -m -s /bin/false -u $UID arma && \
-    mkdir -p $INSTALL_LOC /home/arma/.local/share $CONFIG_LOC $PROFILES_LOC && \
-    ln -s $CONFIG_LOC "/home/arma/.local/share/Arma 3" && \
-    ln -s $PROFILES_LOC "/home/arma/.local/share/Arma 3 - Other Profiles" && \
-    chown -R arma:arma $INSTALL_LOC $CONFIG_LOC $PROFILES_LOC
+RUN useradd -m -s /bin/false -u $UID arma
+RUN mkdir -p $INSTALL_LOC /home/arma/.local/share $CONFIG_LOC $PROFILES_LOC
+RUN ln -s $CONFIG_LOC "/home/arma/.local/share/Arma 3"
+RUN ln -s $PROFILES_LOC "/home/arma/.local/share/Arma 3 - Other Profiles"
+RUN chown -R arma:arma $INSTALL_LOC $CONFIG_LOC $PROFILES_LOC
 
 # Install the arma server
 RUN steamcmd \
@@ -32,9 +32,6 @@ RUN steamcmd \
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-# I/O
-EXPOSE $PORT/udp
-
 # Expose and run
 USER arma
 WORKDIR $INSTALL_LOC
@@ -42,5 +39,8 @@ WORKDIR $INSTALL_LOC
 EXPOSE 2344/udp 2344
 EXPOSE 2345
 EXPOSE 2302/udp 2303/udp 2304/udp 2305/udp 2306/udp
+
+VOLUME $CONFIG_LOC
+VOLUME $PROFILES_LOC
 
 ENTRYPOINT /docker-entrypoint.sh
