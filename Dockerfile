@@ -4,6 +4,7 @@ MAINTAINER Laura Demkowicz-Duffy <fragsoc@yusu.org>
 
 ARG APPID=233780
 ARG UID=999
+ARG STEAM_LOGIN=anonymous
 
 ENV INSTALL_LOC "/arma"
 ENV CONFIG_LOC "/config"
@@ -24,7 +25,7 @@ RUN useradd -m -s /bin/false -u $UID arma && \
 
 # Install the arma server
 RUN steamcmd \
-    +login anonymous \
+    +login $STEAM_LOGIN \
     +force_install_dir $INSTALL_LOC \
     +app_update $APPID validate \
     +quit
