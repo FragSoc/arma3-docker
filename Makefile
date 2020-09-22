@@ -19,6 +19,6 @@ base_image: preinstall
 ${SERVER_FILES_TMP}:
 	mkdir -p ./$@
 	${STEAMCMD} +login ${USER} \
-		+force_install_dir ${PWD}/$@ \
+		+force_install_dir ./$@ \
 		+app_update ${APPID} validate \
 		+exit
