@@ -1,0 +1,6 @@
+README.md
+.gitignore
+.dockerignore
+.travis.yml
+LICENSE
+Makefile
