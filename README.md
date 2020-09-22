@@ -10,6 +10,8 @@ make build USER=<your steam username>
 
 You will probably be prompted to login with steam - this is handled entirely by steamcmd; no code or scripts in this repo **ever** see your steam credentials.
 
+If you want to rebuild the image with the latest version of ARMA 3, run `make clean` first.
+
 ### Dependencies
 
 - steamcmd

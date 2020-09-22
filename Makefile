@@ -2,7 +2,7 @@ APPID := 233780
 STEAMCMD := /usr/games/steamcmd
 SERVER_FILES_TMP := server_files
 
-.PHONY: final_image base_image build clean
+.PHONY: final_image build clean ${SERVER_FILES_TMP} base_image
 
 build: final_image
 
