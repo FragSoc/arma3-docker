@@ -4,7 +4,7 @@ MAINTAINER Laura Demkowicz-Duffy <fragsoc@yusu.org>
 
 ENV INSTALL_LOC="/arma"
 
-COPY --chown=arma build $INSTALL_LOC
+COPY --chown=arma ./server_files $INSTALL_LOC
 
 # Expose and run
 USER arma

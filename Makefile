@@ -6,13 +6,13 @@ STEAMCMD := /usr/games/steamcmd
 
 all: final_image
 
-final_image: base_image build Dockerfile.post_install
+final_image: base_image server_files Dockerfile.post_install
 	docker build -f Dockerfile.post_install -t fragsoc/arma3 .
 
 base_image: Dockerfile.pre_install docker-entrypoint.sh
 	docker build -f Dockerfile.pre_install -t fragsoc/arma3_pre_install .
 
-build:
+server_files:
 	mkdir -p ./$@
 	${STEAMCMD} +login ${USER} \
 		+force_install_dir ${PWD}/$@ \
