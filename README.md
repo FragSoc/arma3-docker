@@ -1,6 +1,8 @@
-# ARMA 3 Dedicated Server
-
 ![](https://arma3guide.com/custom/images/Banner.jpg)
+
+![GitHub](https://img.shields.io/github/license/FragSoc/arma3-docker?style=flat-square)
+
+---
 
 A [Docker](https://www.docker.com/) image to run a dedicated server for [ARMA 3](https://arma3.com/).
 
