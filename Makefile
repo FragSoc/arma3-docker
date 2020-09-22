@@ -13,8 +13,8 @@ base_image: Dockerfile.pre_install docker-entrypoint.sh
 	docker build -f Dockerfile.pre_install -t fragsoc/arma3_pre_install .
 
 build:
-	mkdir -p ./build
+	mkdir -p ./$@
 	${STEAMCMD} +login ${USER} \
-		+force_install_dir ${PWD}/build/game \
+		+force_install_dir ${PWD}/$@ \
 		+app_update ${APPID} validate \
 		+exit
