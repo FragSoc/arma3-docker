@@ -22,3 +22,4 @@ RUN ln -s $PROFILES_LOC "/home/arma/.local/share/Arma 3 - Other Profiles"
 RUN chown -R arma:arma $CONFIG_LOC $PROFILES_LOC
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod a+x /docker-entrypoint.sh
