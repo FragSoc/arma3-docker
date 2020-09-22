@@ -10,11 +10,11 @@ clean:
 	rm -rf ${SERVER_FILES_TMP}
 	docker image rm fragsoc/arma3_pre_install
 
-final_image: base_image ${SERVER_FILES_TMP} Dockerfile.post_install
-	docker build -f Dockerfile.post_install -t fragsoc/arma3 .
+final_image: base_image ${SERVER_FILES_TMP} Dockerfile
+	docker build -t fragsoc/arma3 .
 
-base_image: Dockerfile.pre_install docker-entrypoint.sh
-	docker build -f Dockerfile.pre_install -t fragsoc/arma3_pre_install .
+base_image: preinstall
+	cd preinstall; docker build -t fragsoc/arma3_pre_install .
 
 ${SERVER_FILES_TMP}:
 	mkdir -p ./$@
