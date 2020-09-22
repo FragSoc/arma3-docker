@@ -1,4 +1,3 @@
-USER := anonymous
 APPID := 233780
 STEAMCMD := /usr/games/steamcmd
 SERVER_FILES_TMP := server_files
