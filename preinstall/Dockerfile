@@ -11,8 +11,8 @@ ENV PROFILES_LOC="/profiles"
 USER root
 
 # Upgrade the system
-RUN apt update
-RUN apt upgrade --assume-yes
+RUN apt-get update
+RUN apt-get upgrade --assume-yes
 
 # Setup directory structure and permissions
 RUN useradd -m -s /bin/false -u $UID arma
