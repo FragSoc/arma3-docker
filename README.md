@@ -8,11 +8,26 @@ A [Docker](https://www.docker.com/) image to run a dedicated server for [ARMA 3]
 
 ## Running
 
+Sample run command:
+
+```bash
+docker run -d \
+  -p 2344:2344/udp \
+  -p 2344:2344 \
+  -p 2345:2345 \
+  -p 2302-2306:2302-2306/udp \
+  fragsoc/arma3
+```
+
 ### Ports
 
-- 2344 - TCP and UDP
-- 2345 - TCP
-- 2302 to 2306 inclusive - UDP
+All ports taken from the [wiki page](https://community.bistudio.com/wiki/Arma_3_Dedicated_Server#Port_Forwarding).
+
+Port(s) | TCP | UDP
+---|---|---
+2344 | yes | yes
+2345 | yes | no
+2302-2306 inclusive | no | yes
 
 ### Volumes
 
@@ -33,19 +48,19 @@ If you want to rebuild the image with the latest version of ARMA 3, run `make cl
 
 ### Dependencies
 
-- steamcmd
-- docker
+- [`steamcmd`](https://developer.valvesoftware.com/wiki/SteamCMD)
+- [`docker`](https://www.docker.com/)
 - a steam account (doesn't need to own the game)
 
 ### Troubleshooting
 
-- You require a steam account because, for whatever reason, the arma 3 dedicated server app on steam cannot be downloaded by the `anonymous` steam account
-- If docker reports an error communicating with `docker.sock`, you make need to run the above command as root
+- You require a steam account because, for whatever reason, the ARMA 3 dedicated server app on steam cannot be downloaded by the `anonymous` steam account
+- If docker reports an error communicating with `docker.sock`, you may need to run the above command as root
 - If an error is thrown saying `steamcmd` not found, you need to locate your steamcmd executable (`which steamcmd`) and append it as a variable to the make command:
   `make build STEAM_USER=<your steam username> STEAMCMD=<your steamcmd location>`
   or:
   `make build STEAM_USER=<your steam username> STEAMCMD=$(which steamcmd)`
-- You might need to pass the `UID` argument to `make` to correct permissions issues arising from volume ownership
+- If you get an instant `SEGFAULT` from the server when using [bind mounts](https://docs.docker.com/storage/bind-mounts/), either change the owner of the mounts to user:group `999:999` or rebuild the image, passing `UID=<desired system user ID>` to `make`
 
 ## Disclaimer
 
