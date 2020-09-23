@@ -45,6 +45,7 @@ If you want to rebuild the image with the latest version of ARMA 3, run `make cl
   `make build USER=<your steam username> STEAMCMD=<your steamcmd location>`
   or:
   `make build USER=<your steam username> STEAMCMD=$(which steamcmd)`
+- You might need to pass the `UID` argument to `make` to correct permissions issues arising from volume ownership
 
 ## Disclaimer
 
