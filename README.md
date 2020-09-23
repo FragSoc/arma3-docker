@@ -49,16 +49,20 @@ If you want to rebuild the image with the latest version of ARMA 3, run `make cl
 ### Dependencies
 
 - [`steamcmd`](https://developer.valvesoftware.com/wiki/SteamCMD)
-- [`docker`](https://www.docker.com/)
+- `docker`, look [here](https://docs.docker.com/docker-for-windows/install/) for windows or [here](https://docs.docker.com/engine/install/) for linux
 - a steam account (doesn't need to own the game)
+
+> You require a steam account because, for whatever reason, the ARMA 3 dedicated server app on steam cannot be downloaded by the `anonymous` steam account
 
 ### Troubleshooting
 
-- You require a steam account because, for whatever reason, the ARMA 3 dedicated server app on steam cannot be downloaded by the `anonymous` steam account
 - If docker reports an error communicating with `docker.sock`, you may need to run the above command as root
 - If an error is thrown saying `steamcmd` not found, you need to locate your steamcmd executable (`which steamcmd`) and append it as a variable to the make command:
+
   `make build STEAM_USER=<your steam username> STEAMCMD=<your steamcmd location>`
+
   or:
+
   `make build STEAM_USER=<your steam username> STEAMCMD=$(which steamcmd)`
 - If you get an instant `SEGFAULT` from the server when using [bind mounts](https://docs.docker.com/storage/bind-mounts/), either change the owner of the mounts to user:group `999:999` or rebuild the image, passing `UID=<desired system user ID>` to `make`
 
