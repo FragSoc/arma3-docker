@@ -50,6 +50,7 @@ If you want to rebuild the image with the latest version of ARMA 3, run `make cl
 
 - [`steamcmd`](https://developer.valvesoftware.com/wiki/SteamCMD)
 - `docker`, look [here](https://docs.docker.com/docker-for-windows/install/) for windows or [here](https://docs.docker.com/engine/install/) for linux
+- GNU `make`, usually installed under the `build-essential` package on linux; on windows, you must use [cygwin](https://www.cygwin.com/) or the [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10), etc.
 - a steam account (doesn't need to own the game)
 
 > You require a steam account because, for whatever reason, the ARMA 3 dedicated server app on steam cannot be downloaded by the `anonymous` steam account
