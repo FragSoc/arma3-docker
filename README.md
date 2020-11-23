@@ -38,6 +38,20 @@ Port(s) | TCP | UDP
 
 ### Mods
 
+#### Steam Workshop Script
+
+The image includes a script to install mods from the steam workshop to the mods volume.
+
+Usage:
+
+```bash
+docker exec -it <container name> install-mods <steam username> <space-separated list of mod IDs>
+```
+
+You can find the mod IDs in the steam workshop URL: `https://steamcommunity.com/sharedfiles/filedetails/?id=MOD_ID_IS_HERE`.
+
+#### Manual
+
 Install mods folders to the `/mods` volume.
 The launch script will automatically load them on next server start.
 
