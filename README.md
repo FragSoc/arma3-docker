@@ -57,6 +57,7 @@ make -B build STEAM_USER=<your steam username>
 - [`steamcmd`](https://developer.valvesoftware.com/wiki/SteamCMD)
 - `docker`, look [here](https://docs.docker.com/docker-for-windows/install/) for windows or [here](https://docs.docker.com/engine/install/) for linux
 - GNU `make`, usually installed under the `build-essential` package on linux; on windows, you must use [cygwin](https://www.cygwin.com/) or the [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10), etc.
+  This can be skipped if you can install the linux build of the server to `./server_files` with steamcmd after which you can just run a docker build as you might otherwise.
 - a steam account (doesn't need to own the game)
 
 > You require a steam account because, for whatever reason, the ARMA 3 dedicated server app on steam cannot be downloaded by the `anonymous` steam account
@@ -71,7 +72,7 @@ make -B build STEAM_USER=<your steam username>
   or:
 
   `make build STEAM_USER=<your steam username> STEAMCMD=$(which steamcmd)`
-- If you get an instant `SEGFAULT` from the server when using [bind mounts](https://docs.docker.com/storage/bind-mounts/), either change the owner of the mounts to user:group `999:999` or rebuild the image, passing `UID=<desired system user ID>` to `make`
+- If you get an instant `SEGFAULT` from the server when using [bind mounts](https://docs.docker.com/storage/bind-mounts/), either change the owner of the mounts to user:group `999:999` or rebuild the image, passing `UID=<desired system user ID>` to `make` or as a docker build arg.
 
 ## Disclaimer
 
