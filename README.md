@@ -33,6 +33,8 @@ Port(s) | TCP | UDP
 
 - `/config` - server configuration
 - `/profiles` - difficulty profiles
+- `/mods` - server mods
+- `/missions` - mission config files
 
 ## Building
 
