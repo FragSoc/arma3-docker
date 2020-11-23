@@ -4,7 +4,7 @@ set -eo pipefail
 num_mods=$(find $MODS_LOC -maxdepth 1 -mindepth 1 -type d | wc -l)
 
 if [[ $num_mods != 0 ]]; then
-    mods_arg="-mod=$(find mods -maxdepth 1 -mindepth 1 -type d -print0 | sed 's/\x0/;/g' | sed 's/;$//')"
+    mods_arg="-mod=$(find mods/ -maxdepth 1 -mindepth 1 -type d -print0 | sed 's/\x0/;/g' | sed 's/;$//')"
 else
     mods_arg=""
 fi
