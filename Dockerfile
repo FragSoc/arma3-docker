@@ -1,4 +1,4 @@
-FROM fragsoc/arma3_pre_install
+FROM steamcmd/steamcmd
 MAINTAINER Ryan Smith <fragsoc@yusu.org>
 MAINTAINER Laura Demkowicz-Duffy <fragsoc@yusu.org>
 
