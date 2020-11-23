@@ -1,14 +1,14 @@
 #!/bin/bash
 set -eo pipefail
 
-LOCATE_MODS_COMMAND="find $MODS_LOC -maxdepth 1 -mindepth 1 -type d"
+num_mods=$(find $MODS_LOC -maxdepth 1 -mindepth 1 -type d | wc -l)
 
-if [[ $($LOCATE_MODS_COMMAND | wc -l) -ge 1 ]]; then
-    mods_arg="-mod=$($LOCATE_MODS_COMMAND -print0 | sed -i 's/\x0/\\;/g' | sed -i 's/\\;$//')"
+if [[ $num_mods != 0 ]]; then
+    mods_arg="-mod=$(find $MODS_LOC -maxdepth 1 -mindepth 1 -type d -print0 | sed -i 's/\x0/;/g' | sed -i 's/;$//')"
 else
     mods_arg=""
 fi
 
 start_cmd="-config=/config/server.cfg $mods_arg $@"
-printf "Entrypoint script: passing arguments: $start_cmd\n"
-$INSTALL_LOC/arma3server $start_cmd
+printf "Entrypoint script: passing arguments: -config=/config/server.cfg $mods_arg $@\n"
+$INSTALL_LOC/arma3server -config=/config/server.cfg "$mods_arg" $@

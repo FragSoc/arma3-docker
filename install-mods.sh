@@ -22,5 +22,7 @@ done
 
 # Download the mods with steamcmd
 steamcmd +login $STEAM_USER +force_install_dir /tmp $install_command +quit
-# Move them out of the temporary folder
-find "$TMP_DIR_FULL" -print0 -maxdepth 1 -mindepth 1 -type d | xargs --null -I{} 'mv {} $MODS_LOC/@$(basename {})'
+# Move from temporary folder to mods folder and prepend with an @
+find "$TMP_DIR_FULL" -maxdepth 1 -mindepth 1 -type d -exec sh -c 'mv {} $MODS_LOC/\@$(basename {})' \;
+
+# TODO: fix capitalisation
