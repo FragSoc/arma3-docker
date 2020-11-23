@@ -3,7 +3,7 @@ UID := 999
 STEAMCMD := /usr/games/steamcmd
 SERVER_FILES_TMP := server_files
 
-.PHONY: final_image build clean ${SERVER_FILES_TMP} base_image
+.PHONY: build clean
 
 build: ${SERVER_FILES_TMP} Dockerfile
 	docker build --build-arg UID=${UID} -t fragsoc/arma3 .

@@ -41,12 +41,16 @@ Port(s) | TCP | UDP
 Run the command:
 
 ```
-STEAM_USER=<your steam username> make build
+make build STEAM_USER=<your steam username>
 ```
 
 You will probably be prompted to login with steam - this is handled entirely by steamcmd; no code or scripts in this repo **ever** see your steam credentials.
 
-If you want to rebuild the image with the latest version of ARMA 3, run `make clean` first.
+If you want to rebuild the image with the latest version of ARMA 3, run:
+
+```
+make -B build STEAM_USER=<your steam username>
+```
 
 ### Dependencies
 
@@ -62,12 +66,12 @@ If you want to rebuild the image with the latest version of ARMA 3, run `make cl
 - If docker reports an error communicating with `docker.sock`, you may need to run the above command as root
 - If an error is thrown saying `steamcmd` not found, you need to locate your steamcmd executable (`which steamcmd`) and append it as a variable to the make command:
 
-  `STEAM_USER=<your steam username> STEAMCMD=<your steamcmd location> make build `
+  `make build STEAM_USER=<your steam username> STEAMCMD=<your steamcmd location>`
 
   or:
 
-  `STEAM_USER=<your steam username> STEAMCMD=$(which steamcmd) make build `
-- If you get an instant `SEGFAULT` from the server when using [bind mounts](https://docs.docker.com/storage/bind-mounts/), either change the owner of the mounts to user:group `999:999` or rebuild the image, passing `UID=<desired system user ID>` before `make`
+  `make build STEAM_USER=<your steam username> STEAMCMD=$(which steamcmd)`
+- If you get an instant `SEGFAULT` from the server when using [bind mounts](https://docs.docker.com/storage/bind-mounts/), either change the owner of the mounts to user:group `999:999` or rebuild the image, passing `UID=<desired system user ID>` to `make`
 
 ## Disclaimer
 
