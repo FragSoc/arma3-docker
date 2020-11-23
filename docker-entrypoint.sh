@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -eo pipefail
 
 LOCATE_MODS_COMMAND="find $MODS_LOC -maxdepth 1 -type d -not -wholename $MODS_LOC"
 
@@ -8,6 +9,6 @@ else
     mods_arg=""
 fi
 
-printf "Entrypoint script: Mods arguments are:\n$mods_arg\n"
-
-$INSTALL_LOC/arma3server -config=/config/server.cfg $mods_arg $@
+start_cmd="-config=/config/server.cfg $mods_arg $@"
+printf "Entrypoint script: passing arguments: $start_cmd\n"
+$INSTALL_LOC/arma3server $start_cmd
