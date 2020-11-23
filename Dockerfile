@@ -30,6 +30,8 @@ COPY --chown=arma ./server_files $INSTALL_LOC
 COPY ./install-mods.sh /usr/bin/install-mods
 RUN chmod a+x /docker-entrypoint.sh
 RUN chmod a+x /usr/bin/install-mods
+RUN rm -r $INSTALL_LOC/mpmissions
+RUN ln -s $MISSIONS_LOC $INSTALL_LOC/mpmissions
 
 # Expose and run
 USER arma
