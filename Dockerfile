@@ -25,14 +25,14 @@ RUN ln -s $PROFILES_LOC "/home/arma/.local/share/Arma 3 - Other Profiles"
 RUN chown -R arma:arma $CONFIG_LOC $PROFILES_LOC
 
 # Copy server files in
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-COPY ./install-mods.sh /usr/bin/install-mods
-RUN chmod a+x /docker-entrypoint.sh
-RUN chmod a+x /usr/bin/install-mods
 COPY --chown=arma ./server_files $INSTALL_LOC
 RUN rm -r $INSTALL_LOC/mpmissions
 RUN ln -s $MISSIONS_LOC $INSTALL_LOC/mpmissions
 RUN ln -s $MODS_LOC $INSTALL_LOC/mods
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+COPY ./install-mods.sh /usr/bin/install-mods
+RUN chmod a+x /docker-entrypoint.sh
+RUN chmod a+x /usr/bin/install-mods
 
 # Expose and run
 USER arma

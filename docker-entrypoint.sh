@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eo pipefail
 
-LOCATE_MODS_COMMAND="find $MODS_LOC -maxdepth 1 -type d -not -wholename $MODS_LOC"
+LOCATE_MODS_COMMAND="find $MODS_LOC -maxdepth 1 -mindepth 1 -type d"
 
 if [[ $($LOCATE_MODS_COMMAND | wc -l) -ge 1 ]]; then
     mods_arg="-mod=$($LOCATE_MODS_COMMAND -print0 | sed -i 's/\x0/\\;/g' | sed -i 's/\\;$//')"

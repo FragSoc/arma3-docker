@@ -23,4 +23,4 @@ done
 # Download the mods with steamcmd
 steamcmd +login $STEAM_USER +force_install_dir /tmp $install_command +quit
 # Move them out of the temporary folder
-find "$TMP_DIR_FULL" -print0 -maxdepth 1 -type d -not -wholename "$TMP_DIR_FULL" | xargs --null -I{} 'mv {} $MODS_LOC/@$(basename {})'
+find "$TMP_DIR_FULL" -print0 -maxdepth 1 -mindepth 1 -type d | xargs --null -I{} 'mv {} $MODS_LOC/@$(basename {})'
