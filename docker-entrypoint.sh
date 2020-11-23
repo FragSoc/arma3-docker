@@ -8,4 +8,6 @@ else
     mods_arg=""
 fi
 
+printf "Entrypoint script: Mods arguments are:\n$mods_arg\n"
+
 $INSTALL_LOC/arma3server -config=/config/server.cfg $mods_arg $@

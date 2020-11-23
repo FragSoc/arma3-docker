@@ -13,6 +13,10 @@ ENV INSTALL_LOC="/arma"
 
 USER root
 
+# Game appears to require ifconfig
+RUN apt update
+RUN apt install --no-install-recommends -y ifconfig
+
 # Setup directory structure and permissions
 RUN useradd -m -s /bin/false -u $UID arma
 RUN mkdir -p /home/arma/.local/share $CONFIG_LOC $PROFILES_LOC $MODS_LOC $MISSIONS_LOC
