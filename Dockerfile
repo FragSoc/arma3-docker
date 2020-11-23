@@ -14,8 +14,8 @@ ENV INSTALL_LOC="/arma"
 USER root
 
 # Game appears to require ifconfig
-RUN apt update
-RUN apt install --no-install-recommends -y net-tools
+RUN apt-get update
+RUN apt-get install --no-install-recommends -y net-tools
 
 # Setup directory structure and permissions
 RUN useradd -m -s /bin/false -u $UID arma
