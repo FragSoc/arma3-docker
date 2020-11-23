@@ -16,7 +16,7 @@ MODS_IDS="$@"
 
 # Generate the single command to download all the mods
 install_command=""
-for mod_id in "${MODS_IDS[@]}"; do
+for mod_id in "$@"; do
   install_command="$install_command +workshop_download_item $APP_ID $mod_id"
 done
 
