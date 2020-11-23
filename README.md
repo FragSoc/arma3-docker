@@ -36,6 +36,13 @@ Port(s) | TCP | UDP
 - `/mods` - server mods
 - `/missions` - mission config files
 
+### Mods
+
+Install mods folders to the `/mods` volume.
+The launch script will automatically load them on next server start.
+
+> **Warning**: folders and subfolders may need their names correcting to have no capitals in them (see [here](https://community.bistudio.com/wiki/Arma_3_Dedicated_Server#Case_sensitivity_.26_Mods))
+
 ## Building
 
 Run the command:
