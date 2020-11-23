@@ -6,7 +6,7 @@ set -eo pipefail
 APP_ID=107410
 # Steam creates it's own folder hierarchy when we download workshop items so we need to extract them
 TMP_DIR=/tmp
-TMP_DIR_FULL="$TMP_DIR/steamapps/workshop/content/$APP_ID"
+TMP_DIR_FULL="$TMP_DIR/steamapps/workshop/content/$APP_ID/"
 # Mods can only be downloaded by someone who owns the game so we need a username to login with
 # Note that this means the script must be run interactively
 STEAM_USER=$1
@@ -23,4 +23,4 @@ done
 # Download the mods with steamcmd
 steamcmd +login $STEAM_USER +force_install_dir /tmp $install_command +quit
 # Move them out of the temporary folder
-find "$TMP_DIR_FULL" -maxdepth 1 -type d -not -wholename "$TMP_DIR_FULL" -exec mv {} $MODS_LOC \;
+find "$TMP_DIR_FULL" -print0 -maxdepth 1 -type d -not -wholename "$TMP_DIR_FULL" | xargs --null -I{} 'mv {} $MODS_LOC/@$(basename {})'

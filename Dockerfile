@@ -26,15 +26,17 @@ RUN chown -R arma:arma $CONFIG_LOC $PROFILES_LOC
 
 # Copy server files in
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-COPY --chown=arma ./server_files $INSTALL_LOC
 COPY ./install-mods.sh /usr/bin/install-mods
 RUN chmod a+x /docker-entrypoint.sh
 RUN chmod a+x /usr/bin/install-mods
+COPY --chown=arma ./server_files $INSTALL_LOC
 RUN rm -r $INSTALL_LOC/mpmissions
 RUN ln -s $MISSIONS_LOC $INSTALL_LOC/mpmissions
+RUN ln -s $MODS_LOC $INSTALL_LOC/mods
 
 # Expose and run
 USER arma
+ENV HOME="/arma"
 WORKDIR $INSTALL_LOC
 
 EXPOSE 2344/udp 2344
