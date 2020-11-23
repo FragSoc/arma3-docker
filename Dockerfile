@@ -43,4 +43,4 @@ EXPOSE 2302/udp 2303/udp 2304/udp 2305/udp 2306/udp
 
 VOLUME $CONFIG_LOC $PROFILES_LOC $MISSIONS_LOC $MODS_LOC
 
-ENTRYPOINT /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
