@@ -15,7 +15,7 @@ USER root
 
 # Game appears to require ifconfig
 RUN apt update
-RUN apt install --no-install-recommends -y ifconfig
+RUN apt install --no-install-recommends -y net-tools
 
 # Setup directory structure and permissions
 RUN useradd -m -s /bin/false -u $UID arma
