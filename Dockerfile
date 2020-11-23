@@ -15,7 +15,7 @@ USER root
 
 # Setup directory structure and permissions
 RUN useradd -m -s /bin/false -u $UID arma
-RUN mkdir -p /home/arma/.local/share $CONFIG_LOC $PROFILES_LOC
+RUN mkdir -p /home/arma/.local/share $CONFIG_LOC $PROFILES_LOC $MODS_LOC $MISSIONS_LOC
 RUN ln -s $CONFIG_LOC "/home/arma/.local/share/Arma 3"
 RUN ln -s $PROFILES_LOC "/home/arma/.local/share/Arma 3 - Other Profiles"
 RUN chown -R arma:arma $CONFIG_LOC $PROFILES_LOC
